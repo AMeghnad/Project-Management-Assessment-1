@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PrjMgmtFPS
+namespace PrjtMgmtFPS
 {
     public class Gun : MonoBehaviour
     {
-
+        public Shoot shoot;
+        public Bullet bullet;
         // Use this for initialization
         void Start()
         {
