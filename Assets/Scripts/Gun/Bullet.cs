@@ -9,10 +9,11 @@ namespace PrjtMgmtFPS
         public GameObject gunPrefab;
         public Rigidbody rigid;
         public float bulletSpeed = 50f;
+
         // Use this for initialization
         void Start()
         {
-            
+
         }
 
         // Update is called once per frame
@@ -21,9 +22,12 @@ namespace PrjtMgmtFPS
             rigid.AddForce(transform.forward * bulletSpeed);
         }
 
-        void OnCollisionEnter(Collision col)
+        void OnTriggerEnter(Collider col)
         {
-            
+            if(col.name == "Wall")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

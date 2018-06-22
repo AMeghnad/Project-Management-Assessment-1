@@ -6,32 +6,31 @@ namespace PrjtMgmtFPS
 {
     public class SteeringBehaviourController : MonoBehaviour
     {
-        private Seek seek;
-        private Patrol patrol;
+        public Seek seek;
+        public Patrol patrol;
         public Transform player;
         private float distance;
-        public float triggerDistance = 10f;
+        public float triggerDistance = 20f;
 
+        //Use this for initialisation
+        void Start()
+        {
+            seek.weighting = 0.75f;
+        }
         // Update is called once per frame
         void Update()
         {
             distance = (player.position - transform.position).magnitude;
-            if(distance <= triggerDistance)
+            if (distance <= triggerDistance)
             {
                 patrol.weighting = 0f;
-                seek.weighting = 1.5f;
+                seek.weighting++;
             }
             if (distance > triggerDistance)
             {
-                {
-                    seek.weighting = 0;
-                    patrol.weighting = 1.5f;
-                }
-            }
-            else
-            {
                 seek.weighting = 0;
-            }
+                patrol.weighting = 2f;
+            }           
         }
     }
 }
